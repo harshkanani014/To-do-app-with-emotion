@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.shortcuts import render, redirect
 from .models import To_Do
 from django.contrib.auth.decorators import login_required
@@ -45,10 +46,35 @@ def edit_to_do(request, id):
                 }
                 return render(request, 'edit_to_do.html', context)
 
-
+@login_required(login_url="/")
 def delete_to_do(request, id):
         to_do = To_Do.objects.get(id=id)
+        if to_do.is_completed==False:
+                messages.info(request, "Please complete task before deleting")
+                return redirect('/home')
+
         to_do.is_deleted = True
         to_do.save()
         return redirect('/home')
+
+@login_required(login_url="/")
+def complete_to_do(request, id):
+        to_do = To_Do.objects.get(id=id)
+        to_do_done = to_do.is_completed
+        if request.method=="POST":
+                if to_do.is_completed == False:
+                        to_do.is_completed = True
+                else:
+                        to_do.is_completed = False
+                to_do.save()
+                return redirect('/home')
+        else:
+                if to_do_done==True:
+                        to_do.is_completed = False
+                        to_do.save()
+                        return redirect('/home') 
+                context = {
+                        'to_do': to_do
+                }
+                return render(request, 'end_to_do.html', context)
 

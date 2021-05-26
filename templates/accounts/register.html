@@ -1,4 +1,71 @@
-<!doctype html>
+
+{% extends 'main.html' %}
+{% block content %}
+
+{% if messages %}
+		{% for message in messages %}
+
+      <div class="alert {{message.tags}}">
+      <span class="closebtn">&times;</span>  
+      <strong>{{message}}</strong>
+      </div>
+
+		  
+
+		{% endfor %}
+    {% endif %} 
+<div class="header-bar">
+    <h1>Register</h1>
+</div>
+
+<div class="card-body">
+    <form method="POST" action="/register">
+        {% csrf_token %}
+         <label for="email" class="visually-hidden">E-mail</label>
+        <input type="email" name="email" id="email" class="form-control" placeholder="E-mail" required autofocus>
+
+        <label for="gender" class="visually-hidden">Gender</label>
+                <select id="gender" name="gender">
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="binary">Binary</option>
+                  <option value="not-to-say">Prefer Not to Say</option>
+                </select>
+        <label for="age" class="visually-hidden">Age</label>
+        <input type="number" name="age" id="age" class="form-control" placeholder="age" required autofocus>
+          
+        <label for="inputPassword" class="visually-hidden">Password</label>
+        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+
+        <label for="inputPassword" class="visually-hidden">Confirm Password</label>
+        <input type="password" name="confirmpassword" id="confirmpassword" class="form-control" placeholder="Comfirm Password" required>
+
+        <input style="margin-top:10px ;" class="button" type="submit" value="Register">
+          
+        </form>
+        {% comment %} <input style="margin-top:10px ;" class="button" type="submit" value="Register"> {% endcomment %}
+    </form>
+    <p>Already have an account? <a href='/signin'>Login</a></p>
+</div>
+
+<script>
+var close = document.getElementsByClassName("closebtn");
+var i;
+
+for (i = 0; i < close.length; i++) {
+  close[i].onclick = function(){
+    var div = this.parentElement;
+    div.style.opacity = "0";
+    setTimeout(function(){ div.style.display = "none"; }, 600);
+  }
+}
+</script>
+
+
+{% endblock content %}
+
+
+{% comment %} <!doctype html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -111,4 +178,4 @@ body {
 
   
 </body>
-</html>
+</html> {% endcomment %}

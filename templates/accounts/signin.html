@@ -1,4 +1,48 @@
-<!doctype html>
+{% extends 'main.html' %}
+{% block content %}
+
+{% if messages %}
+		{% for message in messages %}
+
+      <div class="alert {{message.tags}}">
+      <span class="closebtn">&times;</span>  
+      <strong>{{message}}</strong>
+      </div>
+
+		  {% comment %} <div id="mesg" class="alert alert-{{message.tags}} alert-dismissible" visible ="false">
+			<strong>{{message}}</strong> 
+		  </div> {% endcomment %}
+
+		{% endfor %}
+    {% endif %} 
+
+<div class="header-bar">
+    <h1>Login</h1>
+</div>
+
+<div class="card-body">
+    <form method="POST" action="/signin">
+        {% csrf_token %}
+        <label for="email" class="visually-hidden">E-mail</label>
+        <input type="email" name="email" id="email" class="form-control" placeholder="E-mail" required autofocus>
+  
+        <label for="inputPassword" class="visually-hidden">Password</label>
+        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+
+        <input style="margin-top:10px ;" class="button" type="submit" value="SignIn">
+    </form>
+    <p>Don't have an account? <a href="/register">Register</a></p>
+</div>
+
+
+
+
+
+
+{% endblock content %}
+
+
+{% comment %} <!doctype html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -103,4 +147,4 @@ body {
 
   
 </body>
-</html>
+</html> {% endcomment %}
