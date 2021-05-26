@@ -1,60 +1,75 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>To-Do emotion</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
-  <section>
-    <div class="circle"></div>
-    <header>
-      <img src="{% static 'images/logo.png' %}" class = "logo">
-      <div class="toggle"></div>
-      <ul class="navigation">
-        <!-- <li><a href="#">Home</a></li>
+  <head>
+    <meta charset="UTF-8" />
+    <title>To-Do emotion</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+      integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    <section>
+      <div class="circle"></div>
+      <header>
+        <img src="{% static 'images/logo.png' %}" class="logo" />
+        <div class="toggle"></div>
+        <ul class="navigation">
+          <!-- <li><a href="#">Home</a></li>
         <li><a href="#">Menu</a></li> -->
-        <li><a href="/register">Sign Up</a></li>
-        <li><a href="/signin">Login</a></li>
-        <li><span class="themeSwitch"></span></li>
+          <li><a href="/register">Sign Up</a></li>
+          <li><a href="/signin">Login</a></li>
+          <li><span class="themeSwitch"></span></li>
+        </ul>
+      </header>
+      <div class="content">
+        <div class="textBox">
+          <h2>
+            Feel<span> Satisfied</span><br />After Completion Of Every Task
+          </h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo.
+          </p>
+          <a href="/signin">Login</a>
+        </div>
+        <div class="imgBox">
+          <img src="{% static 'images/cover.png' %}" />
+        </div>
+      </div>
+      <ul class="sci">
+        <li>
+          <a href="#"><i class="fa fa-facebook"></i></a>
+        </li>
+        <li>
+          <a href="#"><i class="fa fa-twitter"></i></a>
+        </li>
+        <li>
+          <a href="#"><i class="fa fa-instagram"></i></a>
+        </li>
       </ul>
-    </header>
-    <div class="content">
-      <div class="textBox">
-        <h2>Feel<span> Satisfied</span><br>After Completion Of Every Task</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
-        <a href="/signin">Login</a>
-      </div>
-      <div class="imgBox">
-        <img src="{% static 'images/cover.png' %}"/>
-      </div>
-    </div>
-    <ul class="sci">
-      <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-      <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-      <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-    </ul>
-  </section>
-  <script>
+    </section>
+    <script>
+      let menuToggle = document.querySelector(".toggle");
+      let navigation = document.querySelector(".navigation");
+      menuToggle.onclick = function () {
+        menuToggle.classList.toggle("active");
+        navigation.classList.toggle("active");
+      };
 
-   
-    let menuToggle = document.querySelector('.toggle');
-    let navigation = document.querySelector('.navigation');
-    menuToggle.onclick = function(){  
-      menuToggle.classList.toggle('active');
-      navigation.classList.toggle('active');
-    }
-
-    let themeSwitch = document.querySelector('.themeSwitch');
-    let body = document.querySelector('body');
-    themeSwitch.onclick = function(){
-      body.classList.toggle('dark');
-      themeSwitch.classList.toggle('active');
-    }
-  </script>
-</body>
+      let themeSwitch = document.querySelector(".themeSwitch");
+      let body = document.querySelector("body");
+      themeSwitch.onclick = function () {
+        body.classList.toggle("dark");
+        themeSwitch.classList.toggle("active");
+      };
+    </script>
+  </body>
 </html>

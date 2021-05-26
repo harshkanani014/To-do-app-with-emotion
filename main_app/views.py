@@ -1,12 +1,12 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect
-from .models import To_Do
+from .models import To_Do, emotions
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 @login_required(login_url="/")
 def add_to_do(request):
-    if request.method=="POST":
+        if request.method=="POST":
             current_user = request.user
             age = current_user.age
             gender = current_user.gender
@@ -24,7 +24,12 @@ def add_to_do(request):
             new_to_do.daily_to_do = daily_to_do
             new_to_do.save()
             return redirect('/home')
-    return render(request, 'add_to_do.html')
+        else:
+                all_emotions = emotions.objects.all()
+                context = {
+                        'all_emotions': all_emotions
+                }
+                return render(request, 'add_to_do.html', context)
 
 @login_required(login_url="/")
 def edit_to_do(request, id):

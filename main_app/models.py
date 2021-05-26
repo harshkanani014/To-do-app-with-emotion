@@ -2,6 +2,9 @@ from django.db import models
 from accounts.models import CustomUser
 # Create your models here.
 
+class emotions(models.Model):
+    emotion = models.TextField(max_length=50)
+
 class To_Do(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="user")
     age = models.IntegerField(default=0, blank=True)
