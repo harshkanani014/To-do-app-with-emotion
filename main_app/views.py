@@ -10,7 +10,7 @@ def add_to_do(request):
             age = current_user.age
             gender = current_user.gender
             yearly_to_do = request.POST.get('yearly_to_do')
-            monthly_to_do = request.POST.get('monthly_to_do')
+            monthly_to_do = request.POST.get('monthly_to_do') 
             weekly_to_do = request.POST.get('weekly_to_do')
             daily_to_do = request.POST.get('daily_to_do')
             new_to_do = To_Do()
@@ -23,4 +23,32 @@ def add_to_do(request):
             new_to_do.daily_to_do = daily_to_do
             new_to_do.save()
             return redirect('/home')
-    return redirect('/home')
+    return render(request, 'add_to_do.html')
+
+@login_required(login_url="/")
+def edit_to_do(request, id):
+        to_do = To_Do.objects.get(id=id)
+        if request.method=="POST":
+                yearly_to_do = request.POST.get('yearly_to_do')
+                monthly_to_do = request.POST.get('monthly_to_do') 
+                weekly_to_do = request.POST.get('weekly_to_do')
+                daily_to_do = request.POST.get('daily_to_do')
+                to_do.yearly_to_do = yearly_to_do
+                to_do.monthly_to_do = monthly_to_do
+                to_do.weekly_to_do = weekly_to_do
+                to_do.daily_to_do = daily_to_do
+                to_do.save()
+                return redirect('/home')
+        else:
+                context = {
+                        'to_do':to_do
+                }
+                return render(request, 'edit_to_do.html', context)
+
+
+def delete_to_do(request, id):
+        to_do = To_Do.objects.get(id=id)
+        to_do.is_deleted = True
+        to_do.save()
+        return redirect('/home')
+

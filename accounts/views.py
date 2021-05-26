@@ -64,7 +64,10 @@ def To_Do_page(request):
     print(current_user)
     all_to_dos = To_Do.objects.filter(user=current_user)
     print(all_to_dos)
-    return render(request, 'to_do_page.html')
+    context = {
+        'all_to_do': all_to_dos
+    }
+    return render(request, 'to_do_page.html', context)
 
 @login_required(login_url="/")
 def signout(request):
