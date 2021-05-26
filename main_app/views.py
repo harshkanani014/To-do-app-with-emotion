@@ -10,18 +10,36 @@ def add_to_do(request):
             current_user = request.user
             age = current_user.age
             gender = current_user.gender
+            to_do = request.POST.get('to_do')
             yearly_to_do = request.POST.get('yearly_to_do')
-            monthly_to_do = request.POST.get('monthly_to_do') 
+            yearly_to_do_emotion = request.POST.get('yearly_emotion')
+            yearly_to_do_rating = int(request.POST.get('slide1')) + 1
+            monthly_to_do = request.POST.get('monthly_to_do')
+            monthly_to_do_emotion = request.POST.get('monthly_emotion') 
+            monthly_to_do_rating = int(request.POST.get('slide2')) + 1
             weekly_to_do = request.POST.get('weekly_to_do')
+            weekly_to_do_emotion = request.POST.get('weekly_emotion')
+            weekly_to_do_rating = int(request.POST.get('slide3')) + 1
             daily_to_do = request.POST.get('daily_to_do')
+            daily_to_do_emotion = request.POST.get('daily_emotion')
+            daily_to_do_rating = int(request.POST.get('slide4')) + 1
             new_to_do = To_Do()
             new_to_do.user = current_user
             new_to_do.age = age
             new_to_do.gender = gender
+            new_to_do.to_do = to_do
             new_to_do.yearly_to_do = yearly_to_do
+            new_to_do.yearly_to_do_emotion = yearly_to_do_emotion
+            new_to_do.yearly_to_do_rating = yearly_to_do_rating
             new_to_do.monthly_to_do = monthly_to_do
+            new_to_do.monthly_to_do_emotion = monthly_to_do_emotion
+            new_to_do.monthly_to_do_rating = monthly_to_do_rating
             new_to_do.weekly_to_do = weekly_to_do
+            new_to_do.weekly_to_do_emotion = weekly_to_do_emotion
+            new_to_do.weekly_to_do_rating = weekly_to_do_rating
             new_to_do.daily_to_do = daily_to_do
+            new_to_do.daily_to_do_emotion =  daily_to_do_emotion
+            new_to_do.daily_to_do_rating = daily_to_do_rating
             new_to_do.save()
             return redirect('/home')
         else:

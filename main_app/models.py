@@ -4,6 +4,8 @@ from accounts.models import CustomUser
 
 class emotions(models.Model):
     emotion = models.TextField(max_length=50)
+    def __str__(self):
+        return self.emotion
 
 class To_Do(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="user")
@@ -23,6 +25,10 @@ class To_Do(models.Model):
     weekly_to_do_rating = models.IntegerField(blank=True, default=-1)
     daily_to_do_rating = models.IntegerField(blank=True, default=-1)
 
+    end_yearly_to_do_emotion = models.TextField(max_length=1000,  blank=True)
+    end_monthly_to_do_emotion = models.TextField(max_length=1000,  blank=True)
+    end_weekly_to_do_emotion = models.TextField(max_length=1000,  blank=True)
+    end_daily_to_do_emotion = models.TextField(max_length=1000,  blank=True)
     end_yearly_to_do_rating = models.IntegerField(blank=True, default=-1)
     end_monthly_to_do_rating = models.IntegerField(blank=True, default=-1)
     end_weekly_to_do_rating = models.IntegerField(blank=True, default=-1)

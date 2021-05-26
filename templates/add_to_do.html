@@ -34,7 +34,7 @@
         <div class="mb-3">
             <label for="to_do" class="col-sm-12 col-form-label">What's your target</label>
             <div class="col-sm-12">
-            <input type="text" name="to_do" class="form-control" id="to_do">
+            <input type="text" name="to_do" class="form-control" id="to_do" required>
             </div>
         </div>
         <div class="accordion" id="accordionPanelsStayOpenExample">
@@ -55,7 +55,7 @@
                     <div class="mb-3">
                         <label for="emotion" class="col-sm-12 col-form-label">Expected Emotion</label>
                         <div class="col-sm-12">
-                        <select id="emotion" name="emotion" >
+                        <select id="emotion" name="yearly_emotion" >
                         {% for emotions in all_emotions %}
                         <option value="{{emotions.emotion}}">{{emotions.emotion}}</option>
                         {% endfor %}
@@ -93,7 +93,7 @@
                     <div class="mb-3">
                         <label for="emotion" class="col-sm-12 col-form-label">Expected Emotion</label>
                         <div class="col-sm-12">
-                        <select id="emotion" name="emotion" >
+                        <select id="emotion" name="monthly_emotion" >
                         {% for emotions in all_emotions %}
                         <option value="{{emotions.emotion}}">{{emotions.emotion}}</option>
                         {% endfor %}
@@ -131,7 +131,7 @@
                     <div class="mb-3">
                         <label for="emotion" class="col-sm-12 col-form-label">Expected Emotion</label>
                         <div class="col-sm-12">
-                        <select id="emotion" name="emotion" >
+                        <select id="emotion" name="weekly_emotion" >
                         {% for emotions in all_emotions %}
                         <option value="{{emotions.emotion}}">{{emotions.emotion}}</option>
                         {% endfor %}
@@ -169,7 +169,7 @@
                     <div class="mb-3">
                         <label for="emotion" class="col-sm-12 col-form-label">Expected Emotion</label>
                         <div class="col-sm-12">
-                        <select id="emotion" name="emotion" >
+                        <select id="emotion" name="daily_emotion" >
                         {% for emotions in all_emotions %}
                         <option value="{{emotions.emotion}}">{{emotions.emotion}}</option>
                         {% endfor %}
