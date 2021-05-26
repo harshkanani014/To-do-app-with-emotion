@@ -6,4 +6,12 @@
 <h1>Hello</h1>
 <h1>{{ user.email }} </h1>
 <a href="/signout">Logout</a>
+<form action="/add_to_do" method="POST">
+{% csrf_token %}
+<input type="text" name="yearly_to_do" placeholder="yearly to do">
+<input type="text" name="monthly_to_do" placeholder="monthly to do">
+<input type="text" name="weekly_to_do" placeholder="weekly to do">
+<input type="text" name="daily_to_do" placeholder="weekly to do">
+<input type="submit" value="submit">
+</form>
 </body>

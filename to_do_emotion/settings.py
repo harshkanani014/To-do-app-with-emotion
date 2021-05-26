@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'to_do_emotion.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'To_Do1',
+        'NAME': 'To_Do2',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
         'HOST': 'localhost'

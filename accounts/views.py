@@ -5,6 +5,7 @@ from passlib.hash import pbkdf2_sha256
 from django.contrib.auth import authenticate, login, logout, get_user
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from main_app.models import To_Do
 # Create your views here.
 
 def Homepage(request):
@@ -59,6 +60,10 @@ def signin(request):
 
 @login_required(login_url="/")
 def To_Do_page(request):
+    current_user = request.user
+    print(current_user)
+    all_to_dos = To_Do.objects.filter(user=current_user)
+    print(all_to_dos)
     return render(request, 'to_do_page.html')
 
 @login_required(login_url="/")
