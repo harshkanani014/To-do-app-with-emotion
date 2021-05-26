@@ -17,39 +17,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{% static 'css/add_to_do.css' %}">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     
 </head>
 <body>
-
-<div class="container">
-<div class="header-bar">
-    <a href='/home'>&#8592; Back</a>
-</div>
-
-
-<div class="card-body">
-    <form method="POST" action="add_to_do">
-        {% csrf_token %}
-        
-        <label for="to_do" class="visually-hidden">What's Your Target</label>
-        <input type="text" name="to_do" placeholder="Your Goal">
-
-        <label for="yearly_to_do" class="visually-hidden">yearly target</label>
-        <input type="text" name="yearly_to_do" placeholder="yearly to do">
-        
-        <label for="monthly_to_do" class="visually-hidden">monthly target</label>
-        <input type="text" name="monthly_to_do" placeholder="monthly to do">
-        
-        <label for="weekly_to_do" class="visually-hidden">weekly target</label>
-        <input type="text" name="weekly_to_do" placeholder="weekly to do">
-        
-        <label for="daily_to_do" class="visually-hidden">daily target</label>
-        <input type="text" name="daily_to_do" placeholder="weekly to do">
-        
-        <input class="button" type="submit" value="Submit">
-    </form>
-</div>
-</div>
 
 
 <div class="container">
@@ -81,50 +52,194 @@
                         <input type="text" name="yearly_to_do" class="form-control" id="yearly_to_do">
                         </div>
                     </div>
-                    <label for="emotion" class="visually-hidden">Expected Emotion</label>
-                    <select id="emotion" name="emotion">
-                    {% for emotion in all_emotions %}
-                    <option value="{{emotion}}">{{emotion}}</option>
-                    {% endfor %}
-                    </select>
-                    
-
-                    <label for="customRange2" class="form-label">Example range</label>
-                    <input type="range" class="form-range" min="0" max="5" id="customRange2">
+                    <div class="mb-3">
+                        <label for="emotion" class="col-sm-12 col-form-label">Expected Emotion</label>
+                        <div class="col-sm-12">
+                        <select id="emotion" name="emotion" >
+                        {% for emotions in all_emotions %}
+                        <option value="{{emotions.emotion}}">{{emotions.emotion}}</option>
+                        {% endfor %}
+                        </select>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="slide1" class="col-sm-12 col-form-label">Rate Your Emotion</label>
+                         <div class="col-sm-12">
+                         <div class="moji1">10</div>
+                          <div class="slider">
+                                <span>Very Low</span>
+                                <input class="slide1" name="slide1" type="range" value="10" min="0" max="9" step="1" id="slide1">
+                                <span>Very High</span>
+                          </div>
+                          </div>
+                    </div>
             </div>
             </div>
         </div>
         <div class="accordion-item">
             <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-                Accordion Item #2
+                Monthly Goal
             </button>
             </h2>
             <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
             <div class="accordion-body">
-                <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                 <div class="mb-3">
+                        <label for="monthly_to_do" class="col-sm-12 col-form-label">Monthly target</label>
+                        <div class="col-sm-12">
+                        <input type="text" name="monthly_to_do" class="form-control" id="monthly_to_do">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="emotion" class="col-sm-12 col-form-label">Expected Emotion</label>
+                        <div class="col-sm-12">
+                        <select id="emotion" name="emotion" >
+                        {% for emotions in all_emotions %}
+                        <option value="{{emotions.emotion}}">{{emotions.emotion}}</option>
+                        {% endfor %}
+                        </select>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="slide2" class="col-sm-12 col-form-label">Rate Your Emotion</label>
+                         <div class="col-sm-12">
+                         <div class="moji2">10</div>
+                          <div class="slider">
+                                <span>Very Low</span>
+                                <input class="slide2" name="slide2" type="range" value="10" min="0" max="9" step="1" id="slide2">
+                                <span>Very High</span>
+                          </div>
+                          </div>
+                    </div>
+            </div>
+            </div>
+        </div>
+                <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingFour">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false" aria-controls="panelsStayOpen-collapseFour">
+                Weekly Goal
+            </button>
+            </h2>
+            <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFour">
+            <div class="accordion-body">
+                 <div class="mb-3">
+                        <label for="weekly_to_do" class="col-sm-12 col-form-label">Weekly target</label>
+                        <div class="col-sm-12">
+                        <input type="text" name="weekly_to_do" class="form-control" id="weekly_to_do">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="emotion" class="col-sm-12 col-form-label">Expected Emotion</label>
+                        <div class="col-sm-12">
+                        <select id="emotion" name="emotion" >
+                        {% for emotions in all_emotions %}
+                        <option value="{{emotions.emotion}}">{{emotions.emotion}}</option>
+                        {% endfor %}
+                        </select>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="slide3" class="col-sm-12 col-form-label">Rate Your Emotion</label>
+                         <div class="col-sm-12">
+                         <div class="moji3">10</div>
+                          <div class="slider">
+                                <span>Very Low</span>
+                                <input class="slide3" name="slide3" type="range" value="10" min="0" max="9" step="1" id="slide3">
+                                <span>Very High</span>
+                          </div>
+                          </div>
+                    </div>
             </div>
             </div>
         </div>
         <div class="accordion-item">
             <h2 class="accordion-header" id="panelsStayOpen-headingThree">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
-                Accordion Item #3
+                Daily Goal
             </button>
             </h2>
             <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
             <div class="accordion-body">
-                <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                <div class="mb-3">
+                        <label for="daily_to_do" class="col-sm-12 col-form-label">Weekly target</label>
+                        <div class="col-sm-12">
+                        <input type="text" name="daily_to_do" class="form-control" id="daily_to_do">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="emotion" class="col-sm-12 col-form-label">Expected Emotion</label>
+                        <div class="col-sm-12">
+                        <select id="emotion" name="emotion" >
+                        {% for emotions in all_emotions %}
+                        <option value="{{emotions.emotion}}">{{emotions.emotion}}</option>
+                        {% endfor %}
+                        </select>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="slide4" class="col-sm-12 col-form-label">Rate Your Emotion</label>
+                         <div class="col-sm-12">
+                         <div class="moji4">10</div>
+                          <div class="slider">
+                                <span>Very Low</span>
+                                <input class="slide4" name="slide4" type="range" value="10" min="0" max="9" step="1" id="slide4">
+                                <span>Very High</span>
+                          </div>
+                          </div>
+                    </div>
             </div>
             </div>
         </div>
         </div>
+        <input style="margin-top:13px" class="button" type="submit" value="Submit" />
     </form>
     </div>
 
 </div>
 
 {% endblock content %}
+
+<script>
+const range1 = document.querySelector('.slide1');
+const div1 = document.querySelector('.moji1');
+const mojis1 = ['10','9','8','7','6','5','4','3','2','1'];
+mojis1.reverse();
+
+range1.addEventListener('input', (e) => {
+  let rangeValue = e.target.value;
+  div1.textContent = mojis1[rangeValue];
+});
+
+const range2 = document.querySelector('.slide2');
+const div2 = document.querySelector('.moji2');
+const mojis2 = ['10','9','8','7','6','5','4','3','2','1'];
+mojis2.reverse();
+
+range2.addEventListener('input', (e) => {
+  let rangeValue = e.target.value;
+  div2.textContent = mojis2[rangeValue];
+});
+
+const range3 = document.querySelector('.slide3');
+const div3 = document.querySelector('.moji3');
+const mojis3 = ['10','9','8','7','6','5','4','3','2','1'];
+mojis3.reverse();
+
+range3.addEventListener('input', (e) => {
+  let rangeValue = e.target.value;
+  div3.textContent = mojis3[rangeValue];
+});
+
+const range4 = document.querySelector('.slide4');
+const div4 = document.querySelector('.moji4');
+const mojis4 = ['10','9','8','7','6','5','4','3','2','1'];
+mojis4.reverse();
+
+range4.addEventListener('input', (e) => {
+  let rangeValue = e.target.value;
+  div4.textContent = mojis4[rangeValue];
+});
+</script>
 
 </body>
 </html>
