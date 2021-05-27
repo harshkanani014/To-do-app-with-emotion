@@ -84,6 +84,7 @@ def To_Do_page(request):
         print(current_user)
         all_to_dos = To_Do.objects.filter(user=current_user)
         print(all_to_dos)
+        all_to_dos = all_to_dos.order_by("is_completed")
         context = {
             'all_to_do': all_to_dos,
             'count': len(count_incomplete_to_do)

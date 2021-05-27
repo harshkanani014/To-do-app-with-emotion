@@ -19,8 +19,9 @@
       You have <i>{{count}}</i> incomplete task{{ count|pluralize:"s" }}
     </h3>
   </div>
-
-  <a href="/signout">Logout</a>
+  <div style="float:left; ">
+  <a  style="float:left" href="/signout">Logout</a>
+  </div>
 </div>
 
 <div id="search-add-wrapper">
@@ -48,22 +49,23 @@
 <div id="tasklist" class="task-items-wrapper">
   {% for task in all_to_do %} {% if not task.is_deleted %}
   <div class="task-wrapper" data-position="{{task.pk}}">
-    <div class="task-title">
+    <div class="task-title" >
       {% if task.is_completed %}
       <div class="task-complete-icon"></div>
-      <i
-        ><s ><a  href="edit_to_do/{{task.pk}}">{{task.to_do}}</a></s></i
-      >
+      <i><s>
+      <div class="trunc">
+      <a  href="edit_to_do/{{task.pk}}">{{task.to_do}}</a>
+      </div>
+      </s></i>
       {% else %}
       <div class="task-incomplete-icon"></div>
-      <a  href="edit_to_do/{{task.pk}}">{{task.to_do}}</a> {% endif %}
+      <div class="trunc">
+      <a  href="edit_to_do/{{task.pk}}">{{task.to_do}}</a></div> {% endif %}
     </div>
     <div class="task-controls">
       <a class="edit-link" href="complete_to_do/{{task.pk}}">&nbsp;&#10003;&nbsp;</a>
       <a class="edit-link" href="edit_to_do/{{task.pk}}">&nbsp;&#9998;&nbsp;</a>
-      <a class="delete-link" href="delete_to_do/{{task.pk}}"
-        >&nbsp;&#215;&nbsp;</a
-      >
+      <a class="delete-link" href="delete_to_do/{{task.pk}}">&nbsp;&#215;&nbsp;</a>
 
       {% comment %} <span class="handle">&nbsp;&#10247;</span> {% endcomment %}
     </div>
