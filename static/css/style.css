@@ -25,7 +25,7 @@ body
   --white: #030338  ;
   --black2: #3089f0;
 }
-section
+#home
 {
   position: relative;
   width: 100%;
@@ -98,7 +98,7 @@ header ul li a
 {
   content: '\f185';
 }
-.content
+.content1
 {
   position: relative;
   width: 100%;
@@ -107,14 +107,14 @@ header ul li a
   justify-content: space-between;
   align-items: center;
 }
-.content .textBox
+.content1 .textBox
 {
   position: relative;
   max-width: 600px;
   margin-right: 20px;
   z-index: 1;
 }
-.content .textBox h2
+.content1 .textBox h2
 {
   color: var(--black);
   font-size: 3em;
@@ -122,21 +122,21 @@ header ul li a
   line-height: 1.4em;
   font-weight: 700;
 }
-.content .textBox h2 span
+.content1 .textBox h2 span
 {
     color: var(--green);
     font-size: 1.2em;
     font-weight: 700;
 }
-.dark .content .textBox h2 span
+.dark .content1 .textBox h2 span
 {
   color: #3089f0;
 }
-.content .textBox p
+.content1 .textBox p
 {
   color: var(--black);
 }
-/* .content .textBox a
+/* .content1 .textBox a
 {
   display: inline-block;
   margin-top: 20px;
@@ -149,7 +149,7 @@ header ul li a
   text-decoration: none;
 } */
 
-.content .textBox a {
+.content1 .textBox a {
   width: 150px;
   height: 50px;
   display: inline-block;
@@ -163,7 +163,7 @@ header ul li a
   text-decoration: none;
   font-size: 22px;
 }
-.content .imgBox
+.content1 .imgBox
 {
   position: relative;
   width: 500px;
@@ -171,7 +171,7 @@ header ul li a
   justify-content: center;
   align-items: center;
 }
-.content .imgBox:before
+.content1 .imgBox:before
 {
   content: '';
   position: absolute;
@@ -180,11 +180,11 @@ header ul li a
   width: 350px;
   height: 350px;
 }
-.content .imgBox img
+.content1 .imgBox img
 {
   position: relative;
   z-index: 1;
-  max-width: 500px;
+  max-width: 700px;
 }
 .sci
 {
@@ -229,7 +229,7 @@ header ul li a
 
 @media (max-width: 991px)
 {
-  section
+  #home
   {
     padding: 150px 20px;
   }
@@ -267,7 +267,7 @@ header ul li a
     position: relative;
     width: 40px;
     height: 40px;
-    background: url(../images/menu.png);
+    background: url(menu.png);
     filter: invert(1);
     background-size: 40px;
     background-position: center;
@@ -285,7 +285,7 @@ header ul li a
     right: 20px;
     width: 30px;
     height: 30px;
-    background: url(../images/close.png);
+    background: url(close.png);
     background-size: 25px;
     background-position: center;
     background-repeat: no-repeat;
@@ -301,24 +301,24 @@ header ul li a
     font-size: 3em;
     font-weight: 300;
   }
-  .content
+  .content1
   {
     flex-direction: column-reverse;
   }
-  .content .textBox,
-  .content .imgBox
+  .content1 .textBox,
+  .content1 .imgBox
   {
     max-width: 100%;
   }
-  .content .imgBox:before
+  .content1 .imgBox:before
   {
     clip-path: circle(125px at center);
   }
-  .content .imgBox img
+  .content1 .imgBox img
   {
     max-width: 450px;
   }
-  .content .textBox h2
+  .content1 .textBox h2
   {
     font-size: 5em;
   }

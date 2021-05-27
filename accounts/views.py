@@ -1,5 +1,5 @@
 from django.shortcuts import redirect, render
-from .models import CustomUser
+from .models import CustomUser, ContactUs
 import hashlib
 from passlib.hash import pbkdf2_sha256
 from django.contrib.auth import authenticate, login, logout, get_user
@@ -9,6 +9,18 @@ from main_app.models import To_Do
 # Create your views here.
 
 def Homepage(request):
+    if request.method=="POST":
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        subject = request.POST.get('subject')
+        message = request.POST.get('message')
+        new_contact = ContactUs()
+        new_contact.name = name
+        new_contact.email = email
+        new_contact.subject = subject
+        new_contact.message = message
+        new_contact.save()
+        return redirect("/")
     return render(request, "accounts/index.html")
 
 def Register(request):

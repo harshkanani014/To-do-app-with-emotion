@@ -17,3 +17,12 @@ class CustomUser(AbstractUser):
     def __str__(self):
         return str(self.email)
 
+
+class ContactUs(models.Model):
+    name = models.TextField(max_length=50)
+    email = models.TextField(max_length=50)
+    subject = models.TextField(max_length=300)
+    message = models.TextField(max_length=1000)
+
+    def __str__(self):
+        return str(self.message)
