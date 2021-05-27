@@ -52,16 +52,14 @@
       {% if task.is_completed %}
       <div class="task-complete-icon"></div>
       <i
-        ><s><a href="edit_to_do/{{task.pk}}">{{task.to_do}}</a></s></i
+        ><s ><a  href="edit_to_do/{{task.pk}}">{{task.to_do}}</a></s></i
       >
       {% else %}
       <div class="task-incomplete-icon"></div>
-      <a href="edit_to_do/{{task.pk}}">{{task.to_do}}</a> {% endif %}
+      <a  href="edit_to_do/{{task.pk}}">{{task.to_do}}</a> {% endif %}
     </div>
     <div class="task-controls">
-      <a class="edit-link" href="complete_to_do/{{task.pk}}"
-        >&nbsp;&#10003;&nbsp;</a
-      >
+      <a class="edit-link" href="complete_to_do/{{task.pk}}">&nbsp;&#10003;&nbsp;</a>
       <a class="edit-link" href="edit_to_do/{{task.pk}}">&nbsp;&#9998;&nbsp;</a>
       <a class="delete-link" href="delete_to_do/{{task.pk}}"
         >&nbsp;&#215;&nbsp;</a
